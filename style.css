@@ -17,11 +17,11 @@ h1, h2, h3 {
 
 /* But your visualization should be full-width and full-height */
 .vis-holder {
-	width: 1000px;
-	height: 750px;
-	position: absolute;
+	width: 800px;
+	height: 600px;
+	/* position: absolute;
 	left: 0px;
-	top: 0px;
+	top: 0px; */
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
