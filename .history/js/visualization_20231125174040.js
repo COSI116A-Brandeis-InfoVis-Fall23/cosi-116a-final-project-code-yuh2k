@@ -1,3 +1,6 @@
+// Immediately Invoked Function Expression to limit access to our 
+// variables and prevent 
+((() => {
 
   const width = 1000;
         const height = 750;
@@ -22,3 +25,5 @@
                 .attr("fill", "steelblue")
                 .attr("stroke", "white");
         });
+
+})());

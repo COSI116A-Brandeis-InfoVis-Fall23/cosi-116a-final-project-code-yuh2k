@@ -1,8 +1,11 @@
+// Immediately Invoked Function Expression to limit access to our 
+// variables and prevent 
+((() => {
 
   const width = 1000;
         const height = 750;
 
-        const svg = d3.select(".vis-holder").append("svg")
+        const svg = d3.select("#vis-holder").append("svg")
             .attr("width", width)
             .attr("height", height);
 
@@ -22,3 +25,5 @@
                 .attr("fill", "steelblue")
                 .attr("stroke", "white");
         });
+
+})());
