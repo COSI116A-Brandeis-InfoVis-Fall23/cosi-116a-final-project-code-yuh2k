@@ -20,6 +20,7 @@ function updateMapColor(year) {
     console.log("Updating map color for year:", year);
     let data;
     switch(year) {
+        case "2014": data = data_source[2014]; break;
         case "2015": data = data_source[2015]; break;
         case "2016": data = data_source[2016]; break;
         case "2017": data = data_source[2017]; break;
