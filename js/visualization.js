@@ -39,53 +39,61 @@ function updateMapColor(year) {
 const path = d3.geoPath().projection(projection);
 
 const data_source = {
-    2015: {
-        "Vermont": 10,
-        "New Hampshire": 50,
-        "Maine": 109,
-        "Rhode Island": 93,
-        "Connecticut": 344,
-        "Massachusetts": 496
+    "2014": {
+        "Connecticut": 17.8,
+        "Maine": 17.1,
+        "Massachusetts": 20.8,
+        "New Hampshire": 26.2,
+        "Vermont": 14.4,
+        "Rhode Island": 24
     },
-    2016: {
-        "Vermont": 10,
-        "New Hampshire": 69,
-        "Maine": 186,
-        "Rhode Island": 98,
-        "Connecticut": 364,
-        "Massachusetts": 697
+    "2015": {
+        "Connecticut": 23.0,
+        "Maine": 20.9,
+        "Massachusetts": 27.2,
+        "New Hampshire": 32.5,
+        "Vermont": 17.7,
+        "Rhode Island": 30.1
     },
-    2017: {
-        "Vermont": 14,
-        "New Hampshire": 74,
-        "Maine": 183,
-        "Rhode Island": 113,
-        "Connecticut": 475,
-        "Massachusetts": 785
+    "2016": {
+        "Connecticut": 27.9,
+        "Maine": 27.7,
+        "Massachusetts": 34.9,
+        "New Hampshire": 37.1,
+        "Vermont": 21.0,
+        "Rhode Island": 31.2
     },
-    2018: {
-        "Vermont": 25,
-        "New Hampshire": 108,
-        "Maine": 131,
-        "Rhode Island": 81,
-        "Connecticut": 513,
-        "Massachusetts": 934
+    "2017": {
+        "Connecticut": 30.7,
+        "Maine": 33.2,
+        "Massachusetts": 33.9,
+        "New Hampshire": 35.7,
+        "Vermont": 23.2,
+        "Rhode Island": 30.4
     },
-    2019: {
-        "Vermont": 21,
-        "New Hampshire": 110,
-        "Maine": 173,
-        "Rhode Island": 74,
-        "Connecticut": 630,
-        "Massachusetts": 770
+    "2018": {
+        "Connecticut": 30.9,
+        "Maine": 27.2,
+        "Massachusetts": 34.6,
+        "New Hampshire": 34.8,
+        "Vermont": 25.7,
+        "Rhode Island": 31
     },
-    2020: {
-        "Vermont": 46,
-        "New Hampshire": 96,
-        "Maine": 280,
-        "Rhode Island": 109,
-        "Connecticut": 767,
-        "Massachusetts": 904
+    "2019": {
+        "Connecticut": 35.4,
+        "Maine": 29.1,
+        "Massachusetts": 33.5,
+        "New Hampshire": 30.9,
+        "Vermont": 22.8,
+        "Rhode Island": 29.5
+    },
+    "2020": {
+        "Connecticut": 40.3,
+        "Maine": 38.0,
+        "Massachusetts": 35.5,
+        "New Hampshire": 29.4,
+        "Vermont": 32.1,
+        "Rhode Island": 38.5
     },
 };
 
@@ -93,24 +101,26 @@ const data_source = {
 const getName = d => d.properties.STATENAM;
 
 function getColor(dataValue) {
-    if (dataValue < 20) {
+    if (dataValue < 15) {
         return "#eff3ff"; // Very light blue
-    } else if (dataValue < 50) {
+    } else if (dataValue < 17.5) {
         return "#bdd7e7"; // Light blue
-    } else if (dataValue < 100) {
+    } else if (dataValue < 20) {
         return "#6baed6"; // Moderate blue
-    } else if (dataValue < 150) {
+    } else if (dataValue < 22.5) {
         return "#3182bd"; // Blue
-    } else if (dataValue < 200) {
+    } else if (dataValue < 25) {
         return "#08519c"; // Dark blue
-    } else if (dataValue < 300) {
+    } else if (dataValue < 27.5) {
         return "#fdae6b"; // Light orange
-    } else if (dataValue < 400) {
+    } else if (dataValue < 30) {
         return "#fd8d3c"; // Moderate orange
-    } else if (dataValue < 600) {
+    } else if (dataValue < 32.5) {
         return "#f16913"; // Orange
-    } else if (dataValue < 800) {
+    } else if (dataValue < 35) {
         return "#d94801"; // Dark orange
+    } else if (dataValue < 40) {
+        return "#fc3903"; // Red
     } else {
         return "#7f2704"; // Very dark brown, approaching severity
     }
