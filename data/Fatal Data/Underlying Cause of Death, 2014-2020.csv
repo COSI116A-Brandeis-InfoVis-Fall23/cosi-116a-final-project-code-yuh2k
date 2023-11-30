@@ -1,0 +1,97 @@
+﻿Notes,State,State Code,Year,Year Code,Deaths,Population,Crude Rate
+,Connecticut,9,2014,2014,639,3596677,17.8
+,Connecticut,9,2015,2015,827,3590886,23
+,Connecticut,9,2016,2016,997,3576452,27.9
+,Connecticut,9,2017,2017,1103,3588184,30.7
+,Connecticut,9,2018,2018,1105,3572665,30.9
+,Connecticut,9,2019,2019,1263,3565287,35.4
+,Connecticut,9,2020,2020,1434,3557006,40.3
+Total,Connecticut,9,,,7368,25047157,29.4
+,Maine,23,2014,2014,227,1330089,17.1
+,Maine,23,2015,2015,278,1329328,20.9
+,Maine,23,2016,2016,369,1331479,27.7
+,Maine,23,2017,2017,443,1335907,33.2
+,Maine,23,2018,2018,364,1338404,27.2
+,Maine,23,2019,2019,391,1344212,29.1
+,Maine,23,2020,2020,513,1350141,38
+Total,Maine,23,,,2585,9359560,27.6
+,Massachusetts,25,2014,2014,1402,6745408,20.8
+,Massachusetts,25,2015,2015,1851,6794422,27.2
+,Massachusetts,25,2016,2016,2379,6811779,34.9
+,Massachusetts,25,2017,2017,2323,6859819,33.9
+,Massachusetts,25,2018,2018,2391,6902149,34.6
+,Massachusetts,25,2019,2019,2312,6892503,33.5
+,Massachusetts,25,2020,2020,2449,6893574,35.5
+Total,Massachusetts,25,,,15107,47899654,31.5
+,New Hampshire,33,2014,2014,348,1326813,26.2
+,New Hampshire,33,2015,2015,433,1330608,32.5
+,New Hampshire,33,2016,2016,495,1334795,37.1
+,New Hampshire,33,2017,2017,479,1342795,35.7
+,New Hampshire,33,2018,2018,472,1356458,34.8
+,New Hampshire,33,2019,2019,420,1359711,30.9
+,New Hampshire,33,2020,2020,402,1366275,29.4
+Total,New Hampshire,33,,,3049,9417455,32.4
+,Rhode Island,44,2014,2014,253,1055173,24
+,Rhode Island,44,2015,2015,318,1056298,30.1
+,Rhode Island,44,2016,2016,330,1056426,31.2
+,Rhode Island,44,2017,2017,322,1059639,30.4
+,Rhode Island,44,2018,2018,328,1057315,31
+,Rhode Island,44,2019,2019,312,1059361,29.5
+,Rhode Island,44,2020,2020,407,1057125,38.5
+Total,Rhode Island,44,,,2270,7401337,30.7
+,Vermont,50,2014,2014,90,626562,14.4
+,Vermont,50,2015,2015,111,626042,17.7
+,Vermont,50,2016,2016,131,624594,21
+,Vermont,50,2017,2017,145,623657,23.2
+,Vermont,50,2018,2018,161,626299,25.7
+,Vermont,50,2019,2019,142,623989,22.8
+,Vermont,50,2020,2020,200,623347,32.1
+Total,Vermont,50,,,980,4374490,22.4
+Total,,,,,31359,103499653,30.3
+---,,,,,,,
+"Dataset: Underlying Cause of Death, 1999-2020",,,,,,,
+Query Parameters:,,,,,,,
+Drug/Alcohol Induced Causes: Drug-induced causes,,,,,,,
+"HHS Regions: HHS Region #1 CT, ME, MA, NH, RI, VT",,,,,,,
+Year/Month: 2014; 2015; 2016; 2017; 2018; 2019; 2020,,,,,,,
+Group By: State; Year,,,,,,,
+Show Totals: True,,,,,,,
+Show Zero Values: True,,,,,,,
+Show Suppressed: True,,,,,,,
+"Calculate Rates Per: 100,000",,,,,,,
+Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups),,,,,,,
+---,,,,,,,
+Help: See http://wonder.cdc.gov/wonder/help/ucd.html for more information.,,,,,,,
+---,,,,,,,
+"Query Date: Nov 29, 2023 11:43:44 PM",,,,,,,
+---,,,,,,,
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics",,,,,,,
+"System, Mortality 1999-2020 on CDC WONDER Online Database, released in 2021. Data are from the Multiple Cause of Death Files,",,,,,,,
+"1999-2020, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative",,,,,,,
+"Program. Accessed at http://wonder.cdc.gov/ucd-icd10.html on Nov 29, 2023 11:43:44 PM",,,,,,,
+---,,,,,,,
+Caveats:,,,,,,,
+"1. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:",,,,,,,
+http://wonder.cdc.gov/wonder/help/ucd.html#2014-Revision.,,,,,,,
+"2. The population figures for year 2020 are bridged-race estimates of the July 1 resident population, from the Vintage 2020",,,,,,,
+"postcensal series released by NCHS on September 22, 2021. The population figures for year 2019 are bridged-race estimates of the",,,,,,,
+"July 1 resident population, from the Vintage 2019 postcensal series released by NCHS on July 9, 2020. The population figures for",,,,,,,
+"year 2018 are bridged-race estimates of the July 1 resident population, from the Vintage 2018 postcensal series released by NCHS",,,,,,,
+"on June 25, 2019. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the",,,,,,,
+"Vintage 2017 postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race",,,,,,,
+"estimates of the July 1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The",,,,,,,
+"population figures for year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal",,,,,,,
+"series released by NCHS on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident",,,,,,,
+"population, from the Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are",,,,,,,
+"bridged-race estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26,",,,,,,,
+"2014. The population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012",,,,,,,
+"postcensal series released by NCHS on June 13, 2013. The population figures for year 2011 are bridged-race estimates of the July",,,,,,,
+"1 resident population, from the Vintage 2011 postcensal series released by NCHS on July 18, 2012. Population figures for 2010",,,,,,,
+are April 1 Census counts. The population figures for years 2001 - 2009 are bridged-race estimates of the July 1 resident,,,,,,,
+"population, from the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population",,,,,,,
+figures for 2000 are April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of July 1,,,,,,,
+estimates. Population figures for the infant age groups are the number of live births. <br/><b>Note:</b> Rates and population,,,,,,,
+"figures for years 2001 - 2009 differ slightly from previously published reports, due to use of the population estimates which",,,,,,,
+were available at the time of release.,,,,,,,
+3. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the,,,,,,,
+resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/ucd.html#Age Group.,,,,,,,
