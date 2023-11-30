@@ -9,6 +9,33 @@ const projection = d3.geoAlbersUsa()
     .translate([-400, 700])
     .scale(3000);
 
+document.querySelectorAll(".year").forEach(button => {
+    button.addEventListener("click", function(){
+        const year = this.getAttribute('data-year');
+        updateMapColor(year);
+    })
+});
+
+function updateMapColor(year) {
+    console.log("Updating map color for year:", year);
+    let data;
+    switch(year) {
+        case "2015": data = data1; break;
+        case "2016": data = data2; break;
+        case "2017": data = data3; break;
+        case "2018": data = data4; break;
+        case "2019": data = data5; break;
+        case "2020": data = data6; break;
+        default: data = {}; // 默认情况或年份不匹配时
+    }
+    svg.selectAll("path")
+        .attr("fill", function(d) {
+            const regionName = getName(d);
+            const dataValue = data[regionName] || 0; 
+            return getColor(dataValue);
+        });
+}
+
 const path = d3.geoPath().projection(projection);
 
 const data1 = {
@@ -19,6 +46,16 @@ const data1 = {
     "Connecticut": 344,
     "Massachusetts": 496
 };
+
+const data2 = {
+    "Vermont": 10000,
+    "New Hampshire": 50,
+    "Maine": 109,
+    "Rhode Island": 93,
+    "Connecticut": 344,
+    "Massachusetts": 496
+};
+
 
 const getName = d => d.properties.STATENAM;
 
@@ -48,4 +85,5 @@ d3.json("data/2023.json").then(function(topojsonData) {
             return getColor(dataValue);
         })
         .attr("stroke", "white");
+        updateMapColor("2015"); 
 });
