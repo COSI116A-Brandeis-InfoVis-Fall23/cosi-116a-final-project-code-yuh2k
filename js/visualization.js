@@ -26,7 +26,7 @@ function updateMapColor(year) {
         case "2018": data = data_source[2018]; break;
         case "2019": data = data_source[2019]; break;
         case "2020": data = data_source[2020]; break;
-        default: data = {}; // 默认情况或年份不匹配时
+        default: data = {};
     }
     svg.selectAll("path")
         .attr("fill", function(d) {
