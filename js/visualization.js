@@ -2,11 +2,13 @@ const width = 1000;
 const height = 750;
 
 const svg = d3.select(".vis-holder").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .attr("width", "100%")
+    .attr("height", "100%");
 
 const projection = d3.geoAlbersUsa()
-    .translate([-200,700])
+    .translate([-700,700])
     .scale(3000);
 
 document.querySelectorAll(".year").forEach(button => {
