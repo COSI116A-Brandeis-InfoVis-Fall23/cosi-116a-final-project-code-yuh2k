@@ -14,7 +14,6 @@ h1, h2, h3 {
 	max-width: 650px;
 	margin: 40px auto;
 }
-
 /* But your visualization should be full-width and full-height */
 .vis-holder {
     display: flex;
