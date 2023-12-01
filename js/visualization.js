@@ -35,6 +35,10 @@ function updateMapColor(year) {
             return getColor(dataValue);
         });
 }
+function displayAreaChart(state){
+    console.log("Displaying state chart for:", state)
+    svg.append("svg")
+}
 
 const path = d3.geoPath().projection(projection);
 
@@ -134,3 +138,21 @@ d3.json("data/2023.json").then(function(topojsonData) {
         .attr("stroke", "white");
         updateMapColor("2015"); 
 });
+
+// var svg_indv = d3.select(".vis-holder")
+//                     .append("svg")
+//                     .attr("width", width + margin.left + margin.right)
+//                     .attr("height", height + margin.top + margin.bottom)
+//                     .append("g")
+//                     .attr("transform",
+//                         "translate(" + margin.left + "," + margin.top + ")");
+
+// specific state line chart
+d3.csv("data/Fatal Data/Underlying Cause of Death, 2014-2020.csv", 
+    function(d){
+        return { year : d3.timeParse("%Y")(d.Year), value : d.Deaths}
+    },
+    svg.selectAll("path")
+    .data(geojsonData.features)
+    .enter().append("path")
+    .attr("d", path))
