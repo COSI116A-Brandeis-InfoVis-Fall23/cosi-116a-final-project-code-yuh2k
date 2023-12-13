@@ -1,16 +1,19 @@
 const width = 1000;
 const height = 750;
 
+// Create and append the SVG element to the visualisation holder
 const svg = d3.select(".vis-holder").append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("preserveAspectRatio", "xMidYMid meet")
     .attr("width", "100%")
     .attr("height", "100%");
 
+// Set up the map projection
 const projection = d3.geoAlbersUsa()
-    .translate([-700,700])
-    .scale(3000);
+    .translate([-1100, 1100]) 
+    .scale(3000 * 1.8);
 
+// Add click event listeners to year buttons
 document.querySelectorAll(".year").forEach(button => {
     button.addEventListener("click", function(){
         const year = this.getAttribute('data-year');
@@ -18,19 +21,10 @@ document.querySelectorAll(".year").forEach(button => {
     })
 });
 
+// Function to update the map color based on the selected year
 function updateMapColor(year) {
     console.log("Updating map color for year:", year);
-    let data;
-    switch(year) {
-        case "2014": data = data_source[2014]; break;
-        case "2015": data = data_source[2015]; break;
-        case "2016": data = data_source[2016]; break;
-        case "2017": data = data_source[2017]; break;
-        case "2018": data = data_source[2018]; break;
-        case "2019": data = data_source[2019]; break;
-        case "2020": data = data_source[2020]; break;
-        default: data = {};
-    }
+    let data = data_source[year] || {}; 
     svg.selectAll("path")
         .attr("fill", function(d) {
             const regionName = getName(d);
@@ -38,13 +32,17 @@ function updateMapColor(year) {
             return getColor(dataValue);
         });
 }
+
+// Function to display area chart for a state
 function displayAreaChart(state){
     console.log("Displaying state chart for:", state)
     svg.append("svg")
 }
 
+// Define the path using the projection
 const path = d3.geoPath().projection(projection);
 
+// Data source for different years
 const data_source = {
     "2014": {
         "Connecticut": 17.8,
@@ -104,6 +102,26 @@ const data_source = {
     },
 };
 
+// Function for mouseout event on map regions
+function handleMouseOver(d, i) {
+    
+    d3.select(this)
+      .transition()
+      .duration(50)
+      .attr('transform', 'scale(1.01)')
+      .attr('stroke-width', '1px');
+}
+
+// Function for mouseout event on map regions
+function handleMouseOut(d, i) {
+    d3.select(this)
+      .transition()
+      .duration(50)
+      .attr('transform', 'scale(1)')
+      .attr('stroke-width', '0.5px');
+}
+
+
 
 const getName = d => d.properties.STATENAM;
 
@@ -134,8 +152,10 @@ function getColor(dataValue) {
 }
 
 
+let geojsonData;
+
 d3.json("data/2023.json").then(function(topojsonData) {
-    const geojsonData = topojson.feature(topojsonData, topojsonData.objects.states);
+    geojsonData = topojson.feature(topojsonData, topojsonData.objects.states); // 在这里赋值
     geojsonData.features.forEach(function(d) {
         console.log(getName(d));
     });
@@ -145,27 +165,124 @@ d3.json("data/2023.json").then(function(topojsonData) {
         .attr("d", path)
         .attr("fill", function(d) {
             const regionName = getName(d);
-            const dataValue = data1[regionName] || 0; 
+            const dataValue = data_source["2015"][regionName] || 0; 
             return getColor(dataValue);
         })
-        .attr("stroke", "white");
-        updateMapColor("2015"); 
+        .attr("stroke", "white")
+        .on("mouseover", handleMouseOver) // mouse move in
+        .on("mouseout", handleMouseOut) // mouse move out
+        .on("click", function(event, d) {
+            console.log("click on " + d);
+            const stateName = getName(d);
+            updateLineChart(stateName);
+        });
+
+    updateMapColor("2015"); // initialize map color
+})
+
+// Line chart settings
+const plotMargin = {top: 10, right: 30, bottom: 30, left: 60},
+    plotWidth = 460 - plotMargin.left - plotMargin.right,
+    plotHeight = 400 - plotMargin.top - plotMargin.bottom;
+
+// Append SVG element for line chart in the visualisation holder
+const plotSvg = d3.select(".vis-holder").append("svg")
+    .attr("width", plotWidth + plotMargin.left + plotMargin.right)
+    .attr("height", plotHeight + plotMargin.top + plotMargin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + plotMargin.left + "," + plotMargin.top + ")");
+
+// Add a title element for the x-axis
+plotSvg.append("text")
+    .attr("x", plotWidth / 2) // Centered horizontally
+    .attr("y", plotHeight + 30) // Positioned below the x-axis (adjust the 30 as needed)
+    .style("text-anchor", "middle")
+    .style("font-size", "14px") // Set font size to a moderate level
+    .text("Drug Overdose Mortality from 2014-2020");
+
+// Function to extract mortality rate data for each state each year
+function getStateData(state) {
+    return Object.keys(data_source).map(year => {
+      return {
+        year: year,
+        value: data_source[year][state] || 0
+      };
+    });
+  }
+  
+// Create x-axis and y-axis for the line chart
+const years = Object.keys(data_source);
+const x = d3.scaleBand()
+    .range([0, plotWidth])
+    .domain(years)
+    .padding(0.2);
+
+const y = d3.scaleLinear()
+    .domain([0, d3.max(Object.values(data_source), yearData => {
+        return d3.max(Object.values(yearData), d => d);
+})])
+.range([plotHeight, 0]);
+
+// Add x-axis label
+plotSvg.append("text")             
+    .attr("transform", "translate(" + (plotWidth/2) + " ," + (plotHeight + plotMargin.bottom - 10) + ")")
+    .style("text-anchor", "middle")
+    .text("Year");
+
+// Add y-axis label
+plotSvg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - plotMargin.left)
+    .attr("x",0 - (plotHeight / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Mortality Crude Rate (%)");
+
+
+// Add a title element for the plot chart
+const plotTitle = plotSvg.append("text")
+    .attr("x", plotWidth / 2)
+    .attr("y", -10) // Adjust the position based on your layout
+    .style("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("font-weight", "bold");
+
+// Function to update the line chart
+function updateLineChart(state) {
+    console.log("Updating line chart for state:", state);
+
+    // Update the title with the name of the selected state
+    plotTitle.text(state + " Drug Overdose Crude Rate");
+
+    let stateData = getStateData(state);
+  
+    plotSvg.selectAll("*").remove(); // remove all drawings
+
+    plotSvg.append("g")
+      .attr("transform", "translate(0," + plotHeight + ")")
+      .call(d3.axisBottom(x));
+  
+    plotSvg.append("g")
+      .call(d3.axisLeft(y));
+  
+    plotSvg.append("path")
+      .datum(stateData)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 1.5)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.year); })
+        .y(function(d) { return y(d.value); })
+      );
+}
+  
+
+// Event handler for clicking on states on the map
+svg.selectAll("path").on("click", function(event, d) {
+    const stateName = getName(d);
+    updateLineChart(stateName); // Update line chart
 });
 
-// var svg_indv = d3.select(".vis-holder")
-//                     .append("svg")
-//                     .attr("width", width + margin.left + margin.right)
-//                     .attr("height", height + margin.top + margin.bottom)
-//                     .append("g")
-//                     .attr("transform",
-//                         "translate(" + margin.left + "," + margin.top + ")");
-
-// specific state line chart
-d3.csv("data/Fatal Data/Underlying Cause of Death, 2014-2020.csv", 
-    function(d){
-        return { year : d3.timeParse("%Y")(d.Year), value : d.Deaths}
-    },
-    svg.selectAll("path")
-    .data(geojsonData.features)
-    .enter().append("path")
-    .attr("d", path))
+// Initialize the map and line chart colors/data
+updateMapColor("2014"); // Set map color for 2014 data
+updateLineChart("Connecticut"); // Initialize line chart for Connecticut
