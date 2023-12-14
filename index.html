@@ -30,7 +30,7 @@
 <body>
 
   <!-- Update this with your GitHub repo URL -->
-  <span id="forkongithub"><a href="https://github.com/cosi116a-brandeis-infovis-fall23/cosi116a_project_template">Fork me on GitHub</a></span>
+  <span id="forkongithub"><a href="https://github.com/COSI116A-Brandeis-InfoVis-Fall23/cosi-116a-final-project-code-yuh2k.git">Fork me on GitHub</a></span>
 
   <!-- Your writeup goes here -->
   <div class = "content-column">
@@ -42,9 +42,9 @@
     <p>Project-long Course Project as part of COSI 116A: Information Visualization</a>, taught by <a href="https://cs.brandeis.edu/~dylan/">Prof. Dylan Cashman</a>, <a href="https://cs.brandeis.edu/">Brandeis University</a>.</p>
     
     <h1>Motivation</h1>
-    <p>In the last few years, it has become impossible to ignore the continous news of the opiod crisis and rising occurences of substance abuse. In particular, we have started to hear more and more about fentynal and how it compares with previous substances.
-     With the extremely wide demographic who partake in these substances it's hard to pin point the root cause of this crisis. One thing is certain, this issue affects all of the communities we live in.
-     We aim to provide a visualization to help policy makers understand how to tackle the opioid epidemic and compare the regions through numbers.</p>
+    <p>
+      In the last few years, it has become impossible to ignore the continuous news of the opioid crisis and rising occurrences of substance abuse. In particular, we have started to hear more and more about fentanyl and how it compares with previous substances. With the extremely wide demographic who partake in these substances it's hard to pinpoint the root cause of this crisis. One thing is certain, this issue affects all of the communities we live in. We aim to provide a visualization to help policy makers understand how to tackle the opioid epidemic and compare the regions through numbers. Our goal is to provide a tool so that someone can easily compare the trend from year to year.
+    </p>
     
     <p><em>Our goal is to create an interactive presentation showcasing drug overdose trends from 2014 to 2020 in the New England region.
 The focal point of this visualization is a dynamic regional map, providing users with an overview of drug usage patterns. Upon selecting a specific state on the region map, users can delve into detailed year-wise usage statistics through an interactive line chart.
@@ -105,9 +105,8 @@ The focal point of this visualization is a dynamic regional map, providing users
     </p>
 
     <p>
-      First, we downloaded our data from the WONDER database, which compiled the death totals that has an underlying cause of exposure or abuse of substances, and Tables 1 and 20 from the National Survey on Drug Use and Health (NSDUH) survey data, which are the percentages and totals of illicit drug and pain reliever usages per state respectively. No processing was needed for the data. There is a mixture of percentages and totals in both data sources, but we only used the percentages in the creation of the visualizations.
-      In particular, this is the data located in the file Underlying Cause of Death, 2014-2020.csv. This dataset was already split and categorized by State, State Code, Year, YearCode, Deaths, Population, and CrudeRate, which was perfect for our visulaization. The original goal of the project was to compare these two datasets, in order to observe the sheer scale of the issue, but we ran out of time to implement the usage data.
-    </p>
+      First, we downloaded our data from the WONDER database, which compiled the death totals that has an underlying cause of exposure or abuse of substances, and Tables 1 and 20 from the National Survey on Drug Use and Health (NSDUH) survey data, which are the percentages and totals of illicit drug and pain reliever usages per state respectively. No processing was needed for the data. There is a mixture of percentages and totals in both data sources, but we only used the percentages in the creation of the visualizations. In particular, this is the data located in the file Underlying Cause of Death, 2014-2020.csv. This dataset was already split and categorized by State, State Code, Year, YearCode, Deaths, Population, and CrudeRate, which was perfect for our visualization. The original goal of the project was to compare these two datasets, in order to observe the sheer scale of the issue, but we ran out of time to implement the usage data.
+</p>
 
     <p>
       Second, to create the map of the states, a processing script was written and can viewed in extract_new_england.py. This script is responsible for creating the json file used to generate the map.
@@ -123,12 +122,16 @@ The focal point of this visualization is a dynamic regional map, providing users
 
     <h1>Design Process</h1>
     
-    <p><em>Sketches and design choices to justify final visualization.</em></p>
-
-    <p><em>Expectation: Evidence of iterative improvement.
-    Logical discussion of design choices grounded in theory from course.
-    Discusses feedback from usability testing.</em></p>
-
+    <p>
+      The journal article <i>The Storyteller</i> (Benjamin) and <i>Narrative Visualization: Telling Stories with Data</i> (Segel) was the basis of our early design ideas. In <i>Narrative Visualization: Telling Stories with Data</i> there is a recurring theme of what defines a story: a good story. It is said that “Stories … often have a beginning, middle, and end” and “communicate information in a psychologically-efficient format”; it has characters and draws your attention to details. In the beginning, we were trying to incorporate these story elements to communicate the scale of this issue. How do we personalize the data to the viewer? Is there a story to be told? What are the “ups” and “downs”? What influences these trends? It was obvious that if we were able to bring the issue closer to the audience then maybe the message could be more clear. After initial sketches, we knew we had to have a map, some type of graph to illustrate populations. Below are some of our designs:
+      </p>
+      <img src="images/prelim_1.png" width="500" height="300"/>
+      <img src="images/prelim_2.png" width="500" height="300"/>
+      <img src="images/prelim_3.png" width="500" height="300"/>
+      <p>
+        From what we know about the importance of color, it was important to have a graph that involves showing the death progression of the areas with colors. The problem would be the years. We, also, know that people are terrible at remembering details when switching from different visualization, so we deicded to have the plot show the trend of time as well. We finally settled on a final design that incorporates these elements. Our two visualizations following the ideas of the Shneiderman's Mantra, o
+      </p>
+      <img src="images/final_design.png" width="500" height="500"/>
 
     <h1>Conclusion</h1>
 
